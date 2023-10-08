@@ -40,7 +40,7 @@ namespace electronic_journal
                 return false;
             }
         }
-
+        //test
         private async void LoginButton_Click(object sender, EventArgs e)
         {
             bool isServerAvailable = await IsServerAvailable("http://127.0.0.1:8000/api/");
