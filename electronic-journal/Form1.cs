@@ -18,6 +18,7 @@ namespace electronic_journal
         public Form1()
         {
             InitializeComponent();
+            //PISYAPOPA
         }
     }
 }
