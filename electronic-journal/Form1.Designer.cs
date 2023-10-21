@@ -205,11 +205,13 @@
             // 
             // Quit
             // 
+            this.Quit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Quit.AutoSize = true;
-            this.Quit.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Quit.Location = new System.Drawing.Point(3, 111);
+            this.Quit.Location = new System.Drawing.Point(25, 80);
             this.Quit.Name = "Quit";
-            this.Quit.Size = new System.Drawing.Size(192, 34);
+            this.Quit.Size = new System.Drawing.Size(150, 50);
             this.Quit.TabIndex = 0;
             this.Quit.Text = "Выйти";
             this.Quit.UseVisualStyleBackColor = true;

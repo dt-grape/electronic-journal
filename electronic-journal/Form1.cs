@@ -21,6 +21,7 @@ namespace electronic_journal
             StartPosition = FormStartPosition.CenterScreen;
             //PISYAPOPA
         
+
         }
     }
 }
