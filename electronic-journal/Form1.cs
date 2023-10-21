@@ -18,7 +18,9 @@ namespace electronic_journal
         public Form1()
         {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
             //PISYAPOPA
+        
         }
     }
 }
