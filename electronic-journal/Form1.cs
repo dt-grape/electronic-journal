@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using electronic_journal;
 using Newtonsoft.Json;
-
+using electronic_journal;
 
 namespace electronic_journal
 {
@@ -19,8 +19,9 @@ namespace electronic_journal
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
-            //PISYAPOPA
-        
+
+
+
 
         }
     }
