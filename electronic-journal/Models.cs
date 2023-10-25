@@ -33,5 +33,12 @@ namespace electronic_journal
             public string group_number { get; set;}
             public int teacher { get; set; }
         }
+
+        public class Student
+        {
+            public string first_name { get; set; }
+            public string last_name { get; set; }
+            public int subject { get; set; }
+        }
     }
 }

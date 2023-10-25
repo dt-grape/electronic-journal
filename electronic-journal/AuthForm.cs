@@ -32,10 +32,10 @@ namespace electronic_journal
             {
                 var token = await requests.AuthenticateUser(username, password);
 
-                Form1 mainForm = new Form1(token);
+                JournalForm mainForm = new JournalForm(token);
                 mainForm.Show();
                 this.Hide();
-                MessageBox.Show($"{token}");
+                //MessageBox.Show($"{token}");
             }
             catch (Exception ex)
             {

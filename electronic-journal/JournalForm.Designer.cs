@@ -1,6 +1,6 @@
 ﻿namespace electronic_journal
 {
-    partial class Form1
+    partial class JournalForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(JournalForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -44,9 +44,10 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.SubjectListBox = new System.Windows.Forms.ListBox();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.Add_discipline = new System.Windows.Forms.Button();
+            this.OpenAddSubjectFormButton = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.OpenFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reference = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -228,12 +229,13 @@
             this.SubjectListBox.Name = "SubjectListBox";
             this.SubjectListBox.Size = new System.Drawing.Size(150, 401);
             this.SubjectListBox.TabIndex = 0;
+            this.SubjectListBox.SelectedIndexChanged += new System.EventHandler(this.SubjectListBox_SelectedIndexChanged);
             // 
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel7.Controls.Add(this.Add_discipline);
+            this.panel7.Controls.Add(this.OpenAddSubjectFormButton);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Margin = new System.Windows.Forms.Padding(2);
@@ -241,15 +243,16 @@
             this.panel7.Size = new System.Drawing.Size(150, 122);
             this.panel7.TabIndex = 0;
             // 
-            // Add_discipline
+            // OpenAddSubjectFormButton
             // 
-            this.Add_discipline.Location = new System.Drawing.Point(19, 41);
-            this.Add_discipline.Margin = new System.Windows.Forms.Padding(2);
-            this.Add_discipline.Name = "Add_discipline";
-            this.Add_discipline.Size = new System.Drawing.Size(112, 41);
-            this.Add_discipline.TabIndex = 1;
-            this.Add_discipline.Text = "Добавить предмет";
-            this.Add_discipline.UseVisualStyleBackColor = true;
+            this.OpenAddSubjectFormButton.Location = new System.Drawing.Point(19, 41);
+            this.OpenAddSubjectFormButton.Margin = new System.Windows.Forms.Padding(2);
+            this.OpenAddSubjectFormButton.Name = "OpenAddSubjectFormButton";
+            this.OpenAddSubjectFormButton.Size = new System.Drawing.Size(112, 41);
+            this.OpenAddSubjectFormButton.TabIndex = 1;
+            this.OpenAddSubjectFormButton.Text = "Добавить предмет";
+            this.OpenAddSubjectFormButton.UseVisualStyleBackColor = true;
+            this.OpenAddSubjectFormButton.Click += new System.EventHandler(this.OpenAddSubjectFormButton_Click);
             // 
             // menuStrip1
             // 
@@ -266,9 +269,18 @@
             // 
             // OpenFile
             // 
+            this.OpenFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ExitToolStripMenuItem});
             this.OpenFile.Name = "OpenFile";
             this.OpenFile.Size = new System.Drawing.Size(48, 20);
             this.OpenFile.Text = "Файл";
+            // 
+            // ExitToolStripMenuItem
+            // 
+            this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.ExitToolStripMenuItem.Text = "Закрыть";
+            this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // reference
             // 
@@ -324,13 +336,14 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.ListBox SubjectListBox;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Button Add_discipline;
+        private System.Windows.Forms.Button OpenAddSubjectFormButton;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem OpenFile;
         private System.Windows.Forms.ToolStripMenuItem reference;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label GroupNameLabel;
         private System.Windows.Forms.Label SubjectNameLabel;
+        private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
     }
 }
 

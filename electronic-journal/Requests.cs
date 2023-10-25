@@ -87,6 +87,36 @@ namespace electronic_journal
                 throw new Exception("Not logout...");
             }
         }
+        
+        //add new subject
+
+        public async Task<string> AddSubject(string token, string name, string group_number, int teacher)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Add("Authorization", $"Token {token}");
+                string apiUrl = $"{base_url}/api/subjects/";
+
+                var requestData = new
+                {
+                    name = name,
+                    group_number = group_number,
+                    teacher = teacher
+                };
+                string jsonRequest = JsonConvert.SerializeObject(requestData);
+
+                StringContent content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await client.PostAsync(apiUrl, content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return "Subject added";
+                }
+
+                throw new Exception("Not added...");
+            }
+        }
 
         public async Task<List<Subject>> GetSubjects(string token)
         {
@@ -104,6 +134,24 @@ namespace electronic_journal
                     return JsonConvert.DeserializeObject<List<Subject>>(jsonResponse);
                 }
 
+                throw new Exception("...");
+            }
+        }
+
+        public async Task<List<Student>> GetStudends(string token)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Add("Authorization", $"Token {token}");
+                string apiUrl = $"{base_url}/api/students/my/";
+
+                HttpResponseMessage response = await client.GetAsync(apiUrl);
+                if (response.IsSuccessStatusCode)
+                {
+                    string jsonResponse = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine(jsonResponse);
+                    return JsonConvert.DeserializeObject<List<Student>>(jsonResponse);
+                }
                 throw new Exception("...");
             }
         }
