@@ -3,6 +3,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http;
 using Newtonsoft.Json;
+using System.Collections.Generic;
+using static electronic_journal.Models;
 
 namespace electronic_journal
 {
@@ -12,18 +14,6 @@ namespace electronic_journal
         public Requests(string url)
         {
             base_url = url;
-        }
-
-        public class User
-        {
-            public string email { get; set; }
-            public int id { get; set; }
-            public string username { get; set; }
-        }
-
-        public class Token
-        {
-            public string Auth_Token { get; set; }
         }
 
         public async Task<User> GetMyProfile(string token)
@@ -77,6 +67,44 @@ namespace electronic_journal
                 }
 
                 throw new Exception("Not auth...");
+            }
+        }
+
+        public async Task<string> LogoutUser(string token)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Add("Authorization", $"Token {token}");
+                string apiUrl = $"{base_url}/api/auth/token/logout/";
+
+                HttpResponseMessage response = await client.PostAsync(apiUrl, null);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return "Logout success";
+                }
+
+                throw new Exception("Not logout...");
+            }
+        }
+
+        public async Task<List<Subject>> GetSubjects(string token)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Add("Authorization", $"Token {token}");
+                string apiUrl = $"{base_url}/api/subjects/my/";
+
+                HttpResponseMessage response = await client.GetAsync(apiUrl);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string jsonResponse = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine(jsonResponse);
+                    return JsonConvert.DeserializeObject<List<Subject>>(jsonResponse);
+                }
+
+                throw new Exception("...");
             }
         }
     }

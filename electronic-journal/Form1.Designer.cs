@@ -39,10 +39,10 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.Quit = new System.Windows.Forms.Button();
+            this.LogoutButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.ListBox_disciplins = new System.Windows.Forms.ListBox();
+            this.SubjectListBox = new System.Windows.Forms.ListBox();
             this.panel7 = new System.Windows.Forms.Panel();
             this.Add_discipline = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -161,7 +161,7 @@
             this.groupBox1.AutoSize = true;
             this.groupBox1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.Quit);
+            this.groupBox1.Controls.Add(this.LogoutButton);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
@@ -182,19 +182,20 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "label1";
             // 
-            // Quit
+            // LogoutButton
             // 
-            this.Quit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.LogoutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Quit.AutoSize = true;
-            this.Quit.Location = new System.Drawing.Point(19, 65);
-            this.Quit.Margin = new System.Windows.Forms.Padding(2);
-            this.Quit.Name = "Quit";
-            this.Quit.Size = new System.Drawing.Size(112, 41);
-            this.Quit.TabIndex = 0;
-            this.Quit.Text = "Выйти";
-            this.Quit.UseVisualStyleBackColor = true;
+            this.LogoutButton.AutoSize = true;
+            this.LogoutButton.Location = new System.Drawing.Point(19, 65);
+            this.LogoutButton.Margin = new System.Windows.Forms.Padding(2);
+            this.LogoutButton.Name = "LogoutButton";
+            this.LogoutButton.Size = new System.Drawing.Size(112, 41);
+            this.LogoutButton.TabIndex = 0;
+            this.LogoutButton.Text = "Выйти";
+            this.LogoutButton.UseVisualStyleBackColor = true;
+            this.LogoutButton.Click += new System.EventHandler(this.LogoutButton_Click);
             // 
             // panel2
             // 
@@ -209,7 +210,7 @@
             // 
             // panel8
             // 
-            this.panel8.Controls.Add(this.ListBox_disciplins);
+            this.panel8.Controls.Add(this.SubjectListBox);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(0, 122);
             this.panel8.Margin = new System.Windows.Forms.Padding(2);
@@ -217,16 +218,16 @@
             this.panel8.Size = new System.Drawing.Size(150, 401);
             this.panel8.TabIndex = 1;
             // 
-            // ListBox_disciplins
+            // SubjectListBox
             // 
-            this.ListBox_disciplins.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ListBox_disciplins.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ListBox_disciplins.FormattingEnabled = true;
-            this.ListBox_disciplins.Location = new System.Drawing.Point(0, 0);
-            this.ListBox_disciplins.Margin = new System.Windows.Forms.Padding(2);
-            this.ListBox_disciplins.Name = "ListBox_disciplins";
-            this.ListBox_disciplins.Size = new System.Drawing.Size(150, 401);
-            this.ListBox_disciplins.TabIndex = 0;
+            this.SubjectListBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.SubjectListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SubjectListBox.FormattingEnabled = true;
+            this.SubjectListBox.Location = new System.Drawing.Point(0, 0);
+            this.SubjectListBox.Margin = new System.Windows.Forms.Padding(2);
+            this.SubjectListBox.Name = "SubjectListBox";
+            this.SubjectListBox.Size = new System.Drawing.Size(150, 401);
+            this.SubjectListBox.TabIndex = 0;
             // 
             // panel7
             // 
@@ -318,10 +319,10 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button Quit;
+        private System.Windows.Forms.Button LogoutButton;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.ListBox ListBox_disciplins;
+        private System.Windows.Forms.ListBox SubjectListBox;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button Add_discipline;
         private System.Windows.Forms.MenuStrip menuStrip1;

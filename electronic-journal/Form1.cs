@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using electronic_journal;
 using Newtonsoft.Json;
-using electronic_journal;
+using static electronic_journal.Requests;
 
 namespace electronic_journal
 {
@@ -32,8 +32,34 @@ namespace electronic_journal
             try
             {
                 var user = await requests.GetMyProfile(access_token);
+                var subjects = await requests.GetSubjects(access_token);
 
-                label1.Text = ($"Здравствуйте: {user.username}");
+                foreach (var subject in subjects)
+                {
+                    SubjectListBox.Items.Add(subject.name);
+                }
+
+                label1.Text = $"Здравствуйте: {user.username}";
+
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine("....");
+                throw;
+            }
+        }
+
+        private async void LogoutButton_Click(object sender, EventArgs e)
+        {
+            var requests = new Requests("http://127.0.0.1:8000");
+
+            try
+            {
+                requests.LogoutUser(access_token);
+
+                AuthForm authForm = new AuthForm();
+                authForm.Show();
+                this.Close();
             }
             catch (Exception exception)
             {

@@ -55,6 +55,7 @@
     <Compile Include="AuthForm.Designer.cs">
       <DependentUpon>AuthForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
