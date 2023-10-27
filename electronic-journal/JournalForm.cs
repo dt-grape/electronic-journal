@@ -16,6 +16,7 @@ namespace electronic_journal
     public partial class JournalForm : Form
     {
         private string access_token;
+        Dictionary<int, Models.Subject> saved_subjects;
 
         public JournalForm(string access_token)
         {
@@ -23,6 +24,7 @@ namespace electronic_journal
             StartPosition = FormStartPosition.CenterScreen;
 
             this.access_token = access_token;
+            saved_subjects = new Dictionary<int, Models.Subject>();
         }
 
         private async void Form1_Load(object sender, EventArgs e)
@@ -34,8 +36,11 @@ namespace electronic_journal
                 var user = await requests.GetMyProfile(access_token);
                 var subjects = await requests.GetSubjects(access_token);
 
+                var i = 0;
+
                 foreach (var subject in subjects)
                 {
+                    saved_subjects[i++] = subject;
                     SubjectListBox.Items.Add($"{subject.name} {subject.group_number}");
                 }
 
@@ -60,6 +65,7 @@ namespace electronic_journal
                 AuthForm authForm = new AuthForm();
                 authForm.Show();
                 this.Close();
+                saved_subjects.Clear();
             }
             catch (Exception exception)
             {
@@ -80,6 +86,7 @@ namespace electronic_journal
             Application.Exit();
         }
 
+        
         private async void SubjectListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             var requests = new Requests("http://127.0.0.1:8000");
@@ -88,8 +95,7 @@ namespace electronic_journal
             {
                 try
                 {
-                    var user = await requests.GetMyProfile(access_token);
-                    var students = await requests.GetStudends(access_token);
+                    var students = await requests.GetStudends(access_token, saved_subjects[SubjectListBox.SelectedIndex].id);
 
                     dataGridView1.Columns.Clear();
                     dataGridView1.Rows.Clear();

@@ -138,12 +138,12 @@ namespace electronic_journal
             }
         }
 
-        public async Task<List<Student>> GetStudends(string token)
+        public async Task<List<Student>> GetStudends(string token, int id)
         {
             using (HttpClient client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Add("Authorization", $"Token {token}");
-                string apiUrl = $"{base_url}/api/students/my/";
+                string apiUrl = $"{base_url}/api/students/by_subject/?id={id}";
 
                 HttpResponseMessage response = await client.GetAsync(apiUrl);
                 if (response.IsSuccessStatusCode)
