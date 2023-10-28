@@ -138,7 +138,7 @@ namespace electronic_journal
             }
         }
 
-        public async Task<List<Student>> GetStudends(string token, int id)
+        public async Task<List<Student>> GetStudents(string token, int id)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -153,6 +153,24 @@ namespace electronic_journal
                     return JsonConvert.DeserializeObject<List<Student>>(jsonResponse);
                 }
                 throw new Exception("...");
+            }
+        }
+
+        public async Task<List<Mark>> GetMarks(string token, int studentId)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Add("Authorization", $"Token {token}");
+                string apiUrl = $"{base_url}/api/marks/by_student/?student_id={studentId}";
+
+                HttpResponseMessage response = await client.GetAsync(apiUrl);
+                if (response.IsSuccessStatusCode)
+                {
+                    string jsonResponse = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine(jsonResponse);
+                    return JsonConvert.DeserializeObject<List<Mark>>(jsonResponse);
+                }
+                throw new Exception("markerr");
             }
         }
     }

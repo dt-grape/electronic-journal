@@ -27,7 +27,7 @@ namespace electronic_journal
             saved_subjects = new Dictionary<int, Models.Subject>();
         }
 
-        private async void Form1_Load(object sender, EventArgs e)
+        private async void JournalForm_Load(object sender, EventArgs e)
         {
             var requests = new Requests("http://127.0.0.1:8000");
 
@@ -95,20 +95,46 @@ namespace electronic_journal
             {
                 try
                 {
-                    var students = await requests.GetStudends(access_token, saved_subjects[SubjectListBox.SelectedIndex].id);
+                    var students = await requests.GetStudents(access_token, saved_subjects[SubjectListBox.SelectedIndex].id);
+
+
+                    SubjectNameLabel.Text = saved_subjects[SubjectListBox.SelectedIndex].name;
+                    GroupNameLabel.Text = saved_subjects[SubjectListBox.SelectedIndex].group_number;
 
                     dataGridView1.Columns.Clear();
                     dataGridView1.Rows.Clear();
 
                     DataGridViewTextBoxColumn nameColumn = new DataGridViewTextBoxColumn();
                     nameColumn.HeaderText = "Имя и фамилия";
-
                     dataGridView1.Columns.Add(nameColumn);
 
                     foreach (var student in students)
                     {
-                        //добавить студентов в один столбец в datagridview
-                        dataGridView1.Rows.Add($"{student.first_name} {student.last_name}");
+                        DataGridViewRow row = new DataGridViewRow();
+
+                        // Добавляем студентов в столбец с именем и фамилией
+                        row.Cells.Add(new DataGridViewTextBoxCell { Value = $"{student.first_name} {student.last_name}" });
+
+                        var marks = await requests.GetMarks(access_token, student.id);
+
+                        foreach (var mark in marks)
+                        {
+                            DataGridViewTextBoxColumn markColumn = new DataGridViewTextBoxColumn();
+                            markColumn.HeaderText = "типо дата";
+                            dataGridView1.Columns.Add(markColumn);
+
+                            // Создаем новую ячейку DataGridViewCell
+                            DataGridViewCell cell = new DataGridViewTextBoxCell();
+
+                            // Устанавливаем значение ячейки
+                            cell.Value = mark.mark.ToString();
+
+                            // Добавляем ячейку в текущую строку
+                            row.Cells.Add(cell);
+                        }
+
+                        // Добавляем строку в DataGridView
+                        dataGridView1.Rows.Add(row);
                     }
                 }
                 catch (Exception exception)

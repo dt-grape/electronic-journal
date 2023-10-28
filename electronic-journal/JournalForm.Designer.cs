@@ -72,7 +72,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(946, 547);
+            this.panel1.Size = new System.Drawing.Size(946, 631);
             this.panel1.TabIndex = 0;
             // 
             // panel6
@@ -80,10 +80,10 @@
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel6.Controls.Add(this.dataGridView1);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(150, 146);
+            this.panel6.Location = new System.Drawing.Point(150, 165);
             this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(796, 401);
+            this.panel6.Size = new System.Drawing.Size(796, 466);
             this.panel6.TabIndex = 3;
             // 
             // dataGridView1
@@ -99,7 +99,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(794, 399);
+            this.dataGridView1.Size = new System.Drawing.Size(794, 464);
             this.dataGridView1.TabIndex = 0;
             // 
             // panel3
@@ -111,7 +111,7 @@
             this.panel3.Location = new System.Drawing.Point(150, 24);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(796, 122);
+            this.panel3.Size = new System.Drawing.Size(796, 141);
             this.panel3.TabIndex = 2;
             // 
             // panel5
@@ -125,26 +125,26 @@
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(646, 122);
+            this.panel5.Size = new System.Drawing.Size(646, 141);
             this.panel5.TabIndex = 4;
             // 
             // GroupNameLabel
             // 
             this.GroupNameLabel.AutoSize = true;
-            this.GroupNameLabel.Location = new System.Drawing.Point(176, 65);
+            this.GroupNameLabel.Font = new System.Drawing.Font("Cascadia Mono", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.GroupNameLabel.Location = new System.Drawing.Point(4, 108);
             this.GroupNameLabel.Name = "GroupNameLabel";
-            this.GroupNameLabel.Size = new System.Drawing.Size(80, 13);
+            this.GroupNameLabel.Size = new System.Drawing.Size(0, 28);
             this.GroupNameLabel.TabIndex = 1;
-            this.GroupNameLabel.Text = "Номер группы";
             // 
             // SubjectNameLabel
             // 
             this.SubjectNameLabel.AutoSize = true;
-            this.SubjectNameLabel.Location = new System.Drawing.Point(22, 65);
+            this.SubjectNameLabel.Font = new System.Drawing.Font("Cascadia Mono", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SubjectNameLabel.Location = new System.Drawing.Point(4, 75);
             this.SubjectNameLabel.Name = "SubjectNameLabel";
-            this.SubjectNameLabel.Size = new System.Drawing.Size(109, 13);
+            this.SubjectNameLabel.Size = new System.Drawing.Size(0, 28);
             this.SubjectNameLabel.TabIndex = 0;
-            this.SubjectNameLabel.Text = "Название предмета";
             // 
             // panel4
             // 
@@ -154,7 +154,7 @@
             this.panel4.Location = new System.Drawing.Point(646, 0);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(150, 122);
+            this.panel4.Size = new System.Drawing.Size(150, 141);
             this.panel4.TabIndex = 3;
             // 
             // groupBox1
@@ -168,7 +168,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(148, 120);
+            this.groupBox1.Size = new System.Drawing.Size(148, 139);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Пользователь";
@@ -176,10 +176,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 41);
+            this.label1.Location = new System.Drawing.Point(16, 47);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(43, 15);
             this.label1.TabIndex = 1;
             this.label1.Text = "label1";
             // 
@@ -189,10 +189,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LogoutButton.AutoSize = true;
-            this.LogoutButton.Location = new System.Drawing.Point(19, 65);
+            this.LogoutButton.Font = new System.Drawing.Font("Cascadia Mono", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LogoutButton.Location = new System.Drawing.Point(19, 75);
             this.LogoutButton.Margin = new System.Windows.Forms.Padding(2);
             this.LogoutButton.Name = "LogoutButton";
-            this.LogoutButton.Size = new System.Drawing.Size(112, 41);
+            this.LogoutButton.Size = new System.Drawing.Size(112, 48);
             this.LogoutButton.TabIndex = 0;
             this.LogoutButton.Text = "Выйти";
             this.LogoutButton.UseVisualStyleBackColor = true;
@@ -206,28 +207,30 @@
             this.panel2.Location = new System.Drawing.Point(0, 24);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(150, 523);
+            this.panel2.Size = new System.Drawing.Size(150, 607);
             this.panel2.TabIndex = 1;
             // 
             // panel8
             // 
             this.panel8.Controls.Add(this.SubjectListBox);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(0, 122);
+            this.panel8.Location = new System.Drawing.Point(0, 140);
             this.panel8.Margin = new System.Windows.Forms.Padding(2);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(150, 401);
+            this.panel8.Size = new System.Drawing.Size(150, 467);
             this.panel8.TabIndex = 1;
             // 
             // SubjectListBox
             // 
             this.SubjectListBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SubjectListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SubjectListBox.Font = new System.Drawing.Font("Cascadia Mono", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.SubjectListBox.FormattingEnabled = true;
+            this.SubjectListBox.ItemHeight = 25;
             this.SubjectListBox.Location = new System.Drawing.Point(0, 0);
             this.SubjectListBox.Margin = new System.Windows.Forms.Padding(2);
             this.SubjectListBox.Name = "SubjectListBox";
-            this.SubjectListBox.Size = new System.Drawing.Size(150, 401);
+            this.SubjectListBox.Size = new System.Drawing.Size(150, 467);
             this.SubjectListBox.TabIndex = 0;
             this.SubjectListBox.SelectedIndexChanged += new System.EventHandler(this.SubjectListBox_SelectedIndexChanged);
             // 
@@ -240,15 +243,16 @@
             this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Margin = new System.Windows.Forms.Padding(2);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(150, 122);
+            this.panel7.Size = new System.Drawing.Size(150, 140);
             this.panel7.TabIndex = 0;
             // 
             // OpenAddSubjectFormButton
             // 
-            this.OpenAddSubjectFormButton.Location = new System.Drawing.Point(19, 41);
+            this.OpenAddSubjectFormButton.Font = new System.Drawing.Font("Cascadia Mono", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.OpenAddSubjectFormButton.Location = new System.Drawing.Point(19, 47);
             this.OpenAddSubjectFormButton.Margin = new System.Windows.Forms.Padding(2);
             this.OpenAddSubjectFormButton.Name = "OpenAddSubjectFormButton";
-            this.OpenAddSubjectFormButton.Size = new System.Drawing.Size(112, 41);
+            this.OpenAddSubjectFormButton.Size = new System.Drawing.Size(112, 47);
             this.OpenAddSubjectFormButton.TabIndex = 1;
             this.OpenAddSubjectFormButton.Text = "Добавить предмет";
             this.OpenAddSubjectFormButton.UseVisualStyleBackColor = true;
@@ -288,19 +292,20 @@
             this.reference.Size = new System.Drawing.Size(65, 20);
             this.reference.Text = "Справка";
             // 
-            // Form1
+            // JournalForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(946, 547);
+            this.ClientSize = new System.Drawing.Size(946, 631);
             this.Controls.Add(this.panel1);
+            this.Font = new System.Drawing.Font("Cascadia Mono", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(484, 397);
-            this.Name = "Form1";
+            this.MinimumSize = new System.Drawing.Size(484, 452);
+            this.Name = "JournalForm";
             this.Text = "Электронный журнал для преподавателей";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.JournalForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel6.ResumeLayout(false);

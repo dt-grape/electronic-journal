@@ -38,17 +38,17 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(47, 16);
-            this.label1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.label1.Location = new System.Drawing.Point(47, 18);
+            this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 13);
+            this.label1.Size = new System.Drawing.Size(109, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Название предмета";
             // 
             // SubjectNameTextBox
             // 
-            this.SubjectNameTextBox.Location = new System.Drawing.Point(50, 29);
-            this.SubjectNameTextBox.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.SubjectNameTextBox.Location = new System.Drawing.Point(50, 33);
+            this.SubjectNameTextBox.Margin = new System.Windows.Forms.Padding(0);
             this.SubjectNameTextBox.Name = "SubjectNameTextBox";
             this.SubjectNameTextBox.Size = new System.Drawing.Size(100, 20);
             this.SubjectNameTextBox.TabIndex = 1;
@@ -56,26 +56,26 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(47, 60);
+            this.label2.Location = new System.Drawing.Point(47, 69);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 13);
+            this.label2.Size = new System.Drawing.Size(79, 15);
             this.label2.TabIndex = 2;
             this.label2.Text = "Номер группы";
             // 
             // GroupNumberTextBox
             // 
-            this.GroupNumberTextBox.Location = new System.Drawing.Point(50, 73);
-            this.GroupNumberTextBox.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.GroupNumberTextBox.Location = new System.Drawing.Point(50, 84);
+            this.GroupNumberTextBox.Margin = new System.Windows.Forms.Padding(0);
             this.GroupNumberTextBox.Name = "GroupNumberTextBox";
             this.GroupNumberTextBox.Size = new System.Drawing.Size(100, 20);
             this.GroupNumberTextBox.TabIndex = 3;
             // 
             // AddSubjectButton
             // 
-            this.AddSubjectButton.Location = new System.Drawing.Point(50, 110);
+            this.AddSubjectButton.Location = new System.Drawing.Point(50, 127);
             this.AddSubjectButton.Name = "AddSubjectButton";
-            this.AddSubjectButton.Size = new System.Drawing.Size(100, 23);
+            this.AddSubjectButton.Size = new System.Drawing.Size(100, 27);
             this.AddSubjectButton.TabIndex = 4;
             this.AddSubjectButton.Text = "Добавить";
             this.AddSubjectButton.UseVisualStyleBackColor = true;
@@ -83,14 +83,15 @@
             // 
             // AddSubjectForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(184, 162);
+            this.ClientSize = new System.Drawing.Size(184, 187);
             this.Controls.Add(this.AddSubjectButton);
             this.Controls.Add(this.GroupNumberTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.SubjectNameTextBox);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Cascadia Mono", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "AddSubjectForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
