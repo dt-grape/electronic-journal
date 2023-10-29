@@ -26,7 +26,8 @@ namespace electronic_journal
             this.access_token = access_token;
             saved_subjects = new Dictionary<int, Models.Subject>();
         }
-
+        
+        
         private async void JournalForm_Load(object sender, EventArgs e)
         {
             var requests = new Requests("http://127.0.0.1:8000");
@@ -53,8 +54,10 @@ namespace electronic_journal
                 throw;
             }
         }
+        
+        
 
-        private async void LogoutButton_Click(object sender, EventArgs e)
+        private void LogoutButton_Click(object sender, EventArgs e)
         {
             var requests = new Requests("http://127.0.0.1:8000");
 
@@ -96,27 +99,45 @@ namespace electronic_journal
                 try
                 {
                     var students = await requests.GetStudents(access_token, saved_subjects[SubjectListBox.SelectedIndex].id);
-
-
+                    var dates = await requests.GetDates(access_token, saved_subjects[SubjectListBox.SelectedIndex].id);
+                    
                     SubjectNameLabel.Text = saved_subjects[SubjectListBox.SelectedIndex].name;
                     GroupNameLabel.Text = saved_subjects[SubjectListBox.SelectedIndex].group_number;
-
-                    dataGridView1.Columns.Clear();
-                    dataGridView1.Rows.Clear();
+                    
+                    JournalDataGridView.Columns.Clear();
+                    JournalDataGridView.Rows.Clear();
 
                     DataGridViewTextBoxColumn nameColumn = new DataGridViewTextBoxColumn();
                     nameColumn.HeaderText = "Имя и фамилия";
-                    dataGridView1.Columns.Add(nameColumn);
+                    JournalDataGridView.Columns.Add(nameColumn);
+
+                    foreach (var date in dates)
+                    {
+                        DataGridViewTextBoxColumn dateColumn = new DataGridViewTextBoxColumn();
+                        dateColumn.HeaderText = date.date;
+                        JournalDataGridView.Columns.Add(dateColumn);
+                    }
 
                     foreach (var student in students)
                     {
                         DataGridViewRow row = new DataGridViewRow();
-
-                        // Добавляем студентов в столбец с именем и фамилией
                         row.Cells.Add(new DataGridViewTextBoxCell { Value = $"{student.first_name} {student.last_name}" });
 
-                        // Добавляем строку в DataGridView
-                        dataGridView1.Rows.Add(row);
+                        foreach (var date in dates)
+                        {
+                            var marks = await requests.GetMarks(access_token, student.id, date.id);
+                            var mark = marks.FirstOrDefault();
+
+                            if (mark != null)
+                            {
+                                row.Cells.Add(new DataGridViewTextBoxCell { Value = mark.mark });
+                            }
+                            else
+                            {
+                                row.Cells.Add(new DataGridViewTextBoxCell { Value = "" });
+                            }
+                        }
+                        JournalDataGridView.Rows.Add(row);
                     }
                 }
                 catch (Exception exception)
@@ -124,6 +145,34 @@ namespace electronic_journal
                     Console.WriteLine("....");
                     throw;
                 }
+            }
+        }
+
+        private async void UpdateListBox_Click(object sender, EventArgs e)
+        {
+            var requests = new Requests("http://127.0.0.1:8000");
+            SubjectListBox.Items.Clear();
+
+            try
+            {
+                var user = await requests.GetMyProfile(access_token);
+                var subjects = await requests.GetSubjects(access_token);
+
+                var i = 0;
+
+                foreach (var subject in subjects)
+                {
+                    saved_subjects[i++] = subject;
+                    SubjectListBox.Items.Add($"{subject.name} {subject.group_number}");
+                }
+
+                label1.Text = $"Здравствуйте: {user.username}";
+
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine("....");
+                throw;
             }
         }
     }

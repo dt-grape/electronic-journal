@@ -51,8 +51,10 @@ namespace electronic_journal
         
         public class Mark
         {
-            public int mark;
+            public int id;
+            public string mark;
             public int student;
+            public int date;
         }
     }
 }

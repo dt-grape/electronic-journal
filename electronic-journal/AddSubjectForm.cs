@@ -19,7 +19,7 @@ namespace electronic_journal
             InitializeComponent();
             this.access_token = access_token;
         }
-
+        
         private async void AddSubjectButton_Click(object sender, EventArgs e)
         {
             var requests = new Requests("http://127.0.0.1:8000");
@@ -34,8 +34,6 @@ namespace electronic_journal
             {
                 await requests.AddSubject(access_token, name, group_number, teacher);
                 MessageBox.Show("Предмет добавлен");
-
-
             }
             catch (Exception exception)
             {

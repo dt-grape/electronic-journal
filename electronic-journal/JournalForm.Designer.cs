@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(JournalForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.JournalDataGridView = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.GroupNameLabel = new System.Windows.Forms.Label();
@@ -48,10 +48,11 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.OpenFile = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.UpdateListBox = new System.Windows.Forms.ToolStripMenuItem();
             this.reference = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.JournalDataGridView)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -78,7 +79,7 @@
             // panel6
             // 
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel6.Controls.Add(this.dataGridView1);
+            this.panel6.Controls.Add(this.JournalDataGridView);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(150, 165);
             this.panel6.Margin = new System.Windows.Forms.Padding(2);
@@ -86,21 +87,21 @@
             this.panel6.Size = new System.Drawing.Size(796, 466);
             this.panel6.TabIndex = 3;
             // 
-            // dataGridView1
+            // JournalDataGridView
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(794, 464);
-            this.dataGridView1.TabIndex = 0;
+            this.JournalDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.JournalDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.JournalDataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.JournalDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.JournalDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.JournalDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.JournalDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.JournalDataGridView.Margin = new System.Windows.Forms.Padding(2);
+            this.JournalDataGridView.Name = "JournalDataGridView";
+            this.JournalDataGridView.RowHeadersWidth = 51;
+            this.JournalDataGridView.RowTemplate.Height = 24;
+            this.JournalDataGridView.Size = new System.Drawing.Size(794, 464);
+            this.JournalDataGridView.TabIndex = 0;
             // 
             // panel3
             // 
@@ -269,7 +270,7 @@
             // 
             // OpenFile
             // 
-            this.OpenFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.ExitToolStripMenuItem });
+            this.OpenFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.ExitToolStripMenuItem, this.UpdateListBox });
             this.OpenFile.Name = "OpenFile";
             this.OpenFile.Size = new System.Drawing.Size(48, 20);
             this.OpenFile.Text = "Файл";
@@ -277,9 +278,16 @@
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.ExitToolStripMenuItem.Text = "Закрыть";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            // 
+            // UpdateListBox
+            // 
+            this.UpdateListBox.Name = "UpdateListBox";
+            this.UpdateListBox.Size = new System.Drawing.Size(128, 22);
+            this.UpdateListBox.Text = "Обновить";
+            this.UpdateListBox.Click += new System.EventHandler(this.UpdateListBox_Click);
             // 
             // reference
             // 
@@ -304,7 +312,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.JournalDataGridView)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -321,11 +329,13 @@
             this.ResumeLayout(false);
         }
 
+        private System.Windows.Forms.ToolStripMenuItem UpdateListBox;
+
         #endregion
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView JournalDataGridView;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;

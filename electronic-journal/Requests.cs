@@ -89,7 +89,6 @@ namespace electronic_journal
             }
         }
         
-        //add new subject
 
         public async Task<string> AddSubject(string token, string name, string group_number, int teacher)
         {
