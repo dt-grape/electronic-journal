@@ -115,24 +115,6 @@ namespace electronic_journal
                         // Добавляем студентов в столбец с именем и фамилией
                         row.Cells.Add(new DataGridViewTextBoxCell { Value = $"{student.first_name} {student.last_name}" });
 
-                        var marks = await requests.GetMarks(access_token, student.id);
-
-                        foreach (var mark in marks)
-                        {
-                            DataGridViewTextBoxColumn markColumn = new DataGridViewTextBoxColumn();
-                            markColumn.HeaderText = "типо дата";
-                            dataGridView1.Columns.Add(markColumn);
-
-                            // Создаем новую ячейку DataGridViewCell
-                            DataGridViewCell cell = new DataGridViewTextBoxCell();
-
-                            // Устанавливаем значение ячейки
-                            cell.Value = mark.mark.ToString();
-
-                            // Добавляем ячейку в текущую строку
-                            row.Cells.Add(cell);
-                        }
-
                         // Добавляем строку в DataGridView
                         dataGridView1.Rows.Add(row);
                     }

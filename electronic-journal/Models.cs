@@ -42,6 +42,13 @@ namespace electronic_journal
             public int subject { get; set; }
         }
 
+        public class Date
+        {
+            public int id { get; set; }
+            public string date { get; set; }
+            public int subject { get; set; }
+        }
+        
         public class Mark
         {
             public int mark;

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Net;
 using static electronic_journal.Models;
 
 namespace electronic_journal
@@ -156,12 +157,31 @@ namespace electronic_journal
             }
         }
 
-        public async Task<List<Mark>> GetMarks(string token, int studentId)
+        public async Task<List<Date>> GetDates(string token, int id)
+        {
+            using (HttpClient client = new HttpClient()) 
+            {
+                client.DefaultRequestHeaders.Add("Authorization", $"Token {token}");
+                string apiUrl = $"{base_url}/api/dates/by_subject/?id={id}";
+
+                HttpResponseMessage response = await client.GetAsync(apiUrl);
+                if (response.IsSuccessStatusCode)
+                {
+                    string jsonResponse = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine(jsonResponse);
+                    return JsonConvert.DeserializeObject<List<Date>>(jsonResponse);
+                }
+
+                throw new Exception("...");
+            }
+        }
+        
+        public async Task<List<Mark>> GetMarks(string token, int studentId, int dateId)
         {
             using (HttpClient client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Add("Authorization", $"Token {token}");
-                string apiUrl = $"{base_url}/api/marks/by_student/?student_id={studentId}";
+                string apiUrl = $"{base_url}/api/marks/by_student/?student_id={studentId}&date_id={dateId}";
 
                 HttpResponseMessage response = await client.GetAsync(apiUrl);
                 if (response.IsSuccessStatusCode)
@@ -170,7 +190,7 @@ namespace electronic_journal
                     Console.WriteLine(jsonResponse);
                     return JsonConvert.DeserializeObject<List<Mark>>(jsonResponse);
                 }
-                throw new Exception("markerr");
+                throw new Exception("...");
             }
         }
     }
