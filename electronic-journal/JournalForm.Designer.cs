@@ -102,6 +102,7 @@
             this.JournalDataGridView.RowTemplate.Height = 24;
             this.JournalDataGridView.Size = new System.Drawing.Size(794, 464);
             this.JournalDataGridView.TabIndex = 0;
+            this.JournalDataGridView.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.JournalDataGridView_CellValidating);
             // 
             // panel3
             // 
