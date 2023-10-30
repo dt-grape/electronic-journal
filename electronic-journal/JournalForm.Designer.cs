@@ -53,6 +53,9 @@
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UpdateListBox = new System.Windows.Forms.ToolStripMenuItem();
             this.reference = new System.Windows.Forms.ToolStripMenuItem();
+            this.CalculateAverageButton_Click = new System.Windows.Forms.Button();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.JournalDataGridView)).BeginInit();
@@ -64,6 +67,8 @@
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.panel9.SuspendLayout();
+            this.panel10.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -84,10 +89,10 @@
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel6.Controls.Add(this.JournalDataGridView);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(150, 165);
+            this.panel6.Location = new System.Drawing.Point(150, 169);
             this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(796, 466);
+            this.panel6.Size = new System.Drawing.Size(796, 462);
             this.panel6.TabIndex = 3;
             // 
             // JournalDataGridView
@@ -103,7 +108,7 @@
             this.JournalDataGridView.Name = "JournalDataGridView";
             this.JournalDataGridView.RowHeadersWidth = 51;
             this.JournalDataGridView.RowTemplate.Height = 24;
-            this.JournalDataGridView.Size = new System.Drawing.Size(794, 464);
+            this.JournalDataGridView.Size = new System.Drawing.Size(794, 460);
             this.JournalDataGridView.TabIndex = 0;
             this.JournalDataGridView.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.JournalDataGridView_CellValidating);
             // 
@@ -113,7 +118,7 @@
             this.panel3.Controls.Add(this.panel5);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(150, 24);
+            this.panel3.Location = new System.Drawing.Point(150, 28);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(796, 141);
@@ -124,9 +129,8 @@
             this.panel5.AutoSize = true;
             this.panel5.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Controls.Add(this.DateTextBox);
-            this.panel5.Controls.Add(this.label2);
-            this.panel5.Controls.Add(this.AddDateButton);
+            this.panel5.Controls.Add(this.panel10);
+            this.panel5.Controls.Add(this.panel9);
             this.panel5.Controls.Add(this.GroupNameLabel);
             this.panel5.Controls.Add(this.SubjectNameLabel);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -138,9 +142,12 @@
             // 
             // DateTextBox
             // 
-            this.DateTextBox.Location = new System.Drawing.Point(510, 50);
+            this.DateTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DateTextBox.Location = new System.Drawing.Point(26, 44);
             this.DateTextBox.Name = "DateTextBox";
-            this.DateTextBox.Size = new System.Drawing.Size(112, 20);
+            this.DateTextBox.Size = new System.Drawing.Size(112, 23);
             this.DateTextBox.TabIndex = 3;
             this.DateTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DateTextBox_KeyPress);
             this.DateTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.DateTextBox_Validating);
@@ -148,7 +155,7 @@
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(510, 33);
+            this.label2.Location = new System.Drawing.Point(23, 27);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 14);
             this.label2.TabIndex = 2;
@@ -156,13 +163,14 @@
             // 
             // AddDateButton
             // 
-            this.AddDateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddDateButton.AutoSize = true;
+            this.AddDateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.AddDateButton.Font = new System.Drawing.Font("Cascadia Mono", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AddDateButton.Location = new System.Drawing.Point(510, 75);
+            this.AddDateButton.Location = new System.Drawing.Point(26, 77);
             this.AddDateButton.Margin = new System.Windows.Forms.Padding(2);
             this.AddDateButton.Name = "AddDateButton";
-            this.AddDateButton.Size = new System.Drawing.Size(112, 48);
+            this.AddDateButton.Size = new System.Drawing.Size(112, 46);
             this.AddDateButton.TabIndex = 1;
             this.AddDateButton.Text = "Добавить дату";
             this.AddDateButton.UseVisualStyleBackColor = true;
@@ -174,7 +182,7 @@
             this.GroupNameLabel.Font = new System.Drawing.Font("Cascadia Mono", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.GroupNameLabel.Location = new System.Drawing.Point(4, 108);
             this.GroupNameLabel.Name = "GroupNameLabel";
-            this.GroupNameLabel.Size = new System.Drawing.Size(0, 28);
+            this.GroupNameLabel.Size = new System.Drawing.Size(0, 35);
             this.GroupNameLabel.TabIndex = 1;
             // 
             // SubjectNameLabel
@@ -183,7 +191,7 @@
             this.SubjectNameLabel.Font = new System.Drawing.Font("Cascadia Mono", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.SubjectNameLabel.Location = new System.Drawing.Point(4, 75);
             this.SubjectNameLabel.Name = "SubjectNameLabel";
-            this.SubjectNameLabel.Size = new System.Drawing.Size(0, 28);
+            this.SubjectNameLabel.Size = new System.Drawing.Size(0, 35);
             this.SubjectNameLabel.TabIndex = 0;
             // 
             // panel4
@@ -219,13 +227,15 @@
             this.label1.Location = new System.Drawing.Point(16, 47);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 15);
+            this.label1.Size = new System.Drawing.Size(56, 18);
             this.label1.TabIndex = 1;
             this.label1.Text = "label1";
             // 
             // LogoutButton
             // 
-            this.LogoutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.LogoutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.LogoutButton.AutoSize = true;
             this.LogoutButton.Font = new System.Drawing.Font("Cascadia Mono", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LogoutButton.Location = new System.Drawing.Point(19, 75);
@@ -242,10 +252,10 @@
             this.panel2.Controls.Add(this.panel8);
             this.panel2.Controls.Add(this.panel7);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 24);
+            this.panel2.Location = new System.Drawing.Point(0, 28);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(150, 607);
+            this.panel2.Size = new System.Drawing.Size(150, 603);
             this.panel2.TabIndex = 1;
             // 
             // panel8
@@ -255,7 +265,7 @@
             this.panel8.Location = new System.Drawing.Point(0, 140);
             this.panel8.Margin = new System.Windows.Forms.Padding(2);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(150, 467);
+            this.panel8.Size = new System.Drawing.Size(150, 463);
             this.panel8.TabIndex = 1;
             // 
             // SubjectListBox
@@ -264,11 +274,11 @@
             this.SubjectListBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SubjectListBox.Font = new System.Drawing.Font("Cascadia Mono", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.SubjectListBox.FormattingEnabled = true;
-            this.SubjectListBox.ItemHeight = 25;
+            this.SubjectListBox.ItemHeight = 32;
             this.SubjectListBox.Location = new System.Drawing.Point(0, 0);
             this.SubjectListBox.Margin = new System.Windows.Forms.Padding(2);
             this.SubjectListBox.Name = "SubjectListBox";
-            this.SubjectListBox.Size = new System.Drawing.Size(150, 467);
+            this.SubjectListBox.Size = new System.Drawing.Size(150, 463);
             this.SubjectListBox.TabIndex = 0;
             this.SubjectListBox.SelectedIndexChanged += new System.EventHandler(this.SubjectListBox_SelectedIndexChanged);
             // 
@@ -299,44 +309,83 @@
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.OpenFile, this.reference });
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.OpenFile,
+            this.reference});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(946, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(946, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // OpenFile
             // 
-            this.OpenFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.ExitToolStripMenuItem, this.UpdateListBox });
+            this.OpenFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ExitToolStripMenuItem,
+            this.UpdateListBox});
             this.OpenFile.Name = "OpenFile";
-            this.OpenFile.Size = new System.Drawing.Size(48, 20);
+            this.OpenFile.Size = new System.Drawing.Size(59, 24);
             this.OpenFile.Text = "Файл";
             // 
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(161, 26);
             this.ExitToolStripMenuItem.Text = "Закрыть";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // UpdateListBox
             // 
             this.UpdateListBox.Name = "UpdateListBox";
-            this.UpdateListBox.Size = new System.Drawing.Size(128, 22);
+            this.UpdateListBox.Size = new System.Drawing.Size(161, 26);
             this.UpdateListBox.Text = "Обновить";
             this.UpdateListBox.Click += new System.EventHandler(this.UpdateListBox_Click);
             // 
             // reference
             // 
             this.reference.Name = "reference";
-            this.reference.Size = new System.Drawing.Size(65, 20);
+            this.reference.Size = new System.Drawing.Size(81, 24);
             this.reference.Text = "Справка";
+            // 
+            // CalculateAverageButton_Click
+            // 
+            this.CalculateAverageButton_Click.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CalculateAverageButton_Click.Font = new System.Drawing.Font("Cascadia Mono", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CalculateAverageButton_Click.Location = new System.Drawing.Point(29, 77);
+            this.CalculateAverageButton_Click.Margin = new System.Windows.Forms.Padding(2);
+            this.CalculateAverageButton_Click.Name = "CalculateAverageButton_Click";
+            this.CalculateAverageButton_Click.Size = new System.Drawing.Size(110, 48);
+            this.CalculateAverageButton_Click.TabIndex = 4;
+            this.CalculateAverageButton_Click.Text = "Расчитать оценку";
+            this.CalculateAverageButton_Click.UseVisualStyleBackColor = true;
+            this.CalculateAverageButton_Click.Click += new System.EventHandler(this.CalculateAverageButton_Click_Click);
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.DateTextBox);
+            this.panel9.Controls.Add(this.AddDateButton);
+            this.panel9.Controls.Add(this.label2);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel9.Location = new System.Drawing.Point(484, 0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(160, 139);
+            this.panel9.TabIndex = 5;
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.CalculateAverageButton_Click);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel10.Location = new System.Drawing.Point(319, 0);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(165, 139);
+            this.panel10.TabIndex = 6;
             // 
             // JournalForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(946, 631);
@@ -365,7 +414,11 @@
             this.panel7.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
+            this.panel10.ResumeLayout(false);
             this.ResumeLayout(false);
+
         }
 
         private System.Windows.Forms.Label label2;
@@ -397,6 +450,9 @@
         private System.Windows.Forms.Label GroupNameLabel;
         private System.Windows.Forms.Label SubjectNameLabel;
         private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
+        private System.Windows.Forms.Button CalculateAverageButton_Click;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Panel panel10;
     }
 }
 

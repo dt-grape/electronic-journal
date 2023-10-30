@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -290,6 +291,81 @@ namespace electronic_journal
                     MessageBox.Show("Неверная дата.");
                     DateTextBox.Text = "";
                 }
+            }
+        }
+
+        private void CalculateAverageButton_Click_Click(object sender, EventArgs e)
+        {
+            CalculateAndAddAverageColumn();
+        }
+
+        private void CalculateAndAddAverageColumn()
+        {
+            if (JournalDataGridView.Rows.Count == 0 || JournalDataGridView.Columns.Count == 0)
+            {
+                // Проверка наличия данных для расчета
+                MessageBox.Show("Нет данных для расчета.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Проверяем наличие столбца "Средний балл"
+            if (JournalDataGridView.Columns["Средний балл"] == null)
+            {
+                // Если столбца нет, то добавляем его
+                DataGridViewTextBoxColumn averageColumn = new DataGridViewTextBoxColumn();
+                averageColumn.HeaderText = "Средний балл";
+                averageColumn.Name = "Средний балл";  // Добавь эту строку, чтобы присвоить имя столбцу
+                JournalDataGridView.Columns.Add(averageColumn);
+            }
+
+            // Проходим по каждой строке и рассчитываем среднее арифметическое
+            for (int rowIndex = 0; rowIndex < JournalDataGridView.Rows.Count; rowIndex++)
+            {
+                double sum = 0;
+                int count = 0;
+
+                // Проходим по каждой ячейке в строке
+                for (int colIndex = 1; colIndex < JournalDataGridView.Columns.Count; colIndex++)
+                {
+                    object cellValue = JournalDataGridView.Rows[rowIndex].Cells[colIndex].Value;
+
+                    if (cellValue != null && cellValue.ToString().Trim().ToLower() != "н")
+                    {
+                        // Проверяем, что значение не равно "н"
+                        if (double.TryParse(cellValue.ToString(), out double mark))
+                        {
+                            // Конвертируем значение в число и добавляем к сумме
+                            sum += mark;
+                            count++;
+                        }
+                    }
+                }
+
+                // Рассчитываем среднее арифметическое и добавляем в новый столбец
+                double average = count > 0 ? sum / count : 0;
+                JournalDataGridView.Rows[rowIndex].Cells["Средний балл"].Value = average.ToString("0.00");
+
+                // Добавляем цветовую метку в зависимости от значения среднего балла
+                Color cellColor = GetColorForAverage(average);
+                JournalDataGridView.Rows[rowIndex].Cells["Средний балл"].Style.BackColor = cellColor;
+            }
+        }
+        private Color GetColorForAverage(double average)
+        {
+            if (average > 4.6)
+            {
+                // Зеленый цвет для высоких оценок
+                return Color.Green;
+            }
+            else if (average < 2.6)
+            {
+                // Красный цвет для низких оценок
+                return Color.Red;
+            }
+            else
+            {
+                // Белый цвет для оценок в среднем диапазоне
+                return Color.White;
             }
         }
     }
