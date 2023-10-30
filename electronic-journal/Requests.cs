@@ -139,7 +139,7 @@ namespace electronic_journal
             }
         }
 
-        public async Task<string> AddMark(string token, string mark, int student, int date)
+        public async Task<Mark> AddMark(string token, string mark, int student, int date)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -160,7 +160,8 @@ namespace electronic_journal
 
                 if (response.IsSuccessStatusCode)
                 {
-                    return "Mark added";
+                    string jsonResponse = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<Mark>(jsonResponse);
                 }
 
                 throw new Exception("Not added...");
@@ -171,7 +172,7 @@ namespace electronic_journal
             using (HttpClient client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Add("Authorization", $"Token {token}");
-                string apiUrl = $"{base_url}/api/students/{markId}/";
+                string apiUrl = $"{base_url}/api/marks/{markId}/";
 
                 HttpResponseMessage response = await client.DeleteAsync(apiUrl);
 
@@ -180,6 +181,38 @@ namespace electronic_journal
                     return "Mark deleted";
                 }
                 throw new Exception("Failed to delete mark...");
+            }
+        }
+
+        public async Task<Mark> EditMark(string token, int id, string mark, int student, int date)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Add("Authorization", $"Token {token}");
+                string apiUrl = $"{base_url}/api/marks/{id}/";
+                
+                var requestData = new
+                {
+                    id = id,
+                    mark = mark,
+                    student = student,
+                    date = date
+                };
+                string jsonRequest = JsonConvert.SerializeObject(requestData);
+
+                Console.WriteLine(jsonRequest);
+
+                StringContent content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await client.PutAsync(apiUrl, content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string jsonResponse = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<Mark>(jsonResponse);
+                }
+
+                throw new Exception("ashybka");
             }
         }
         public async Task<string> DeleteStudent(string token, int studentId)
@@ -233,6 +266,25 @@ namespace electronic_journal
                     Console.WriteLine(jsonResponse);
                     return JsonConvert.DeserializeObject<List<Student>>(jsonResponse);
                 }
+                throw new Exception("...");
+            }
+        }
+
+        public async Task<Date> GetDateByString(string token, string date)
+        {
+            using (HttpClient client = new HttpClient()) 
+            {
+                client.DefaultRequestHeaders.Add("Authorization", $"Token {token}");
+                string apiUrl = $"{base_url}/api/dates/by_string/?date={date}";
+
+                HttpResponseMessage response = await client.GetAsync(apiUrl);
+                if (response.IsSuccessStatusCode)
+                {
+                    string jsonResponse = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine(jsonResponse);
+                    return JsonConvert.DeserializeObject<Date>(jsonResponse);
+                }
+
                 throw new Exception("...");
             }
         }

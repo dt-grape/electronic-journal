@@ -106,6 +106,7 @@ namespace electronic_journal
                     {
                         DataGridViewTextBoxColumn dateColumn = new DataGridViewTextBoxColumn();
                         dateColumn.HeaderText = date.date;
+                        dateColumn.HeaderCell.Tag = date.id;
                         JournalDataGridView.Columns.Add(dateColumn);
                     }
 
@@ -122,7 +123,7 @@ namespace electronic_journal
 
                             if (mark != null)
                             {
-                                row.Cells.Add(new DataGridViewTextBoxCell { Value = mark.mark });
+                                row.Cells.Add(new DataGridViewTextBoxCell { Value = mark.mark, Tag = mark.id });
                             }
                             else
                             {
@@ -171,11 +172,13 @@ namespace electronic_journal
 
         private async void JournalDataGridView_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
+            var requests = new Requests("http://127.0.0.1:8000");
+            string input_text = e.FormattedValue.ToString();
+
             try
             {
                 if (e.ColumnIndex == 0)
                 {
-                    string input_text = e.FormattedValue.ToString();
                     string cell_text = JournalDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value?.ToString() ?? "";
 
                     if (!string.IsNullOrWhiteSpace(input_text) && input_text != cell_text)
@@ -186,16 +189,49 @@ namespace electronic_journal
                         {
                             string first_name = name_parts[0];
                             string last_name = name_parts[1];
-
-                            var requests = new Requests("http://127.0.0.1:8000");
+                            
                             await requests.AddStudent(access_token, first_name, last_name, saved_subjects[SubjectListBox.SelectedIndex].id);
                         }
                     }
                     else if (string.IsNullOrWhiteSpace(input_text) && !string.IsNullOrWhiteSpace(cell_text))
                     {
                         int studentId = (int)JournalDataGridView.Rows[e.RowIndex].Cells[0].Tag;
-                        var requests = new Requests("http://127.0.0.1:8000");
                         await requests.DeleteStudent(access_token, studentId);
+                    }
+                }
+                else
+                {
+                    if (string.IsNullOrWhiteSpace(input_text))
+                    {
+                        if (JournalDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Tag != null)
+                        {
+                            var mark_id = (int)JournalDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Tag;
+
+                            await requests.DeleteMark(access_token, mark_id);
+                        }
+                        return;
+                    }
+                    
+                    if (JournalDataGridView.Rows[e.RowIndex].Cells[0] == null || JournalDataGridView.Columns[e.ColumnIndex].HeaderCell == null)
+                    {
+                        return;
+                    }
+                    
+                    var student_id = (int)JournalDataGridView.Rows[e.RowIndex].Cells[0].Tag;
+                    
+                    var date_id = (int)JournalDataGridView.Columns[e.ColumnIndex].HeaderCell.Tag;
+
+                    if (JournalDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Tag == null)
+                    {
+                        var new_mark = await requests.AddMark(access_token, input_text, student_id, date_id);
+
+                        JournalDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Tag = new_mark.id;
+                    }
+                    else
+                    {
+                        var mark_id = (int)JournalDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Tag;
+
+                        await requests.EditMark(access_token, mark_id, input_text ,student_id, date_id);
                     }
                 }
             }
