@@ -2,7 +2,7 @@
 
 namespace electronic_journal
 {
-    internal class Models
+    public class Models
     {
         public class Teacher
         {

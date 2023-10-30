@@ -255,6 +255,34 @@ namespace electronic_journal
                 throw new Exception("...");
             }
         }
+
+        public async Task<string> AddDate(string token, string date, int subject)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Add("Authorization", $"Token {token}");
+                string apiUrl = $"{base_url}/api/dates/";
+
+                var requestData = new
+                {
+                    date = date,
+                    subject = subject
+                };
+
+                string jsonRequest = JsonConvert.SerializeObject(requestData);
+                
+                StringContent content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await client.PostAsync(apiUrl, content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return "Date added";
+                }
+
+                throw new Exception("Not added...");
+            }
+        }
         
         public async Task<List<Mark>> GetMarks(string token, int studentId, int dateId)
         {

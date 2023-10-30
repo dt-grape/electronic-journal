@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 
@@ -9,7 +11,7 @@ namespace electronic_journal
     public partial class JournalForm : Form
     {
         private string access_token;
-        Dictionary<int, Models.Subject> saved_subjects;
+        public Dictionary<int, Models.Subject> saved_subjects;
 
         public JournalForm(string access_token)
         {
@@ -200,6 +202,58 @@ namespace electronic_journal
             catch (Exception ex)
             {
                 Console.WriteLine("Ошибка: " + ex.Message);
+            }
+        }
+
+        private async void AddDateButton_Click(object sender, EventArgs e)
+        {
+            var requests = new Requests("http://127.0.0.1:8000");
+
+            string date = DateTextBox.Text;
+
+            try
+            {
+                await requests.AddDate(access_token, date, saved_subjects[SubjectListBox.SelectedIndex].id);
+                MessageBox.Show("Дата добавлена");
+                DateTextBox.Clear();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Дата не добавлена");
+            }
+        }
+
+        private void DateTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '-')
+            { 
+                e.Handled = true;
+            }
+        }
+
+        private void DateTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            string input = DateTextBox.Text;
+            if (!Regex.IsMatch(input, @"^\d{4}-\d{2}-\d{2}$"))
+            {
+                MessageBox.Show("Неверный формат даты. Используйте формат 'ГГГГ-ММ-ДД'.");
+                e.Cancel = true;
+            }
+        }
+
+        private void DateTextBox_Validated(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(DateTextBox.Text))
+            {
+                try
+                {
+                    DateTime date = DateTime.Parse(DateTextBox.Text);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Неверная дата.");
+                    DateTextBox.Text = "";
+                }
             }
         }
     }

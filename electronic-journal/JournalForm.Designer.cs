@@ -34,6 +34,9 @@
             this.JournalDataGridView = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.DateTextBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.AddDateButton = new System.Windows.Forms.Button();
             this.GroupNameLabel = new System.Windows.Forms.Label();
             this.SubjectNameLabel = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -121,6 +124,9 @@
             this.panel5.AutoSize = true;
             this.panel5.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.DateTextBox);
+            this.panel5.Controls.Add(this.label2);
+            this.panel5.Controls.Add(this.AddDateButton);
             this.panel5.Controls.Add(this.GroupNameLabel);
             this.panel5.Controls.Add(this.SubjectNameLabel);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -129,6 +135,38 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(646, 141);
             this.panel5.TabIndex = 4;
+            // 
+            // DateTextBox
+            // 
+            this.DateTextBox.Location = new System.Drawing.Point(510, 50);
+            this.DateTextBox.Name = "DateTextBox";
+            this.DateTextBox.Size = new System.Drawing.Size(112, 20);
+            this.DateTextBox.TabIndex = 3;
+            this.DateTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DateTextBox_KeyPress);
+            this.DateTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.DateTextBox_Validating);
+            this.DateTextBox.Validated += new System.EventHandler(this.DateTextBox_Validated);
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(510, 33);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 14);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Дата";
+            // 
+            // AddDateButton
+            // 
+            this.AddDateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddDateButton.AutoSize = true;
+            this.AddDateButton.Font = new System.Drawing.Font("Cascadia Mono", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AddDateButton.Location = new System.Drawing.Point(510, 75);
+            this.AddDateButton.Margin = new System.Windows.Forms.Padding(2);
+            this.AddDateButton.Name = "AddDateButton";
+            this.AddDateButton.Size = new System.Drawing.Size(112, 48);
+            this.AddDateButton.TabIndex = 1;
+            this.AddDateButton.Text = "Добавить дату";
+            this.AddDateButton.UseVisualStyleBackColor = true;
+            this.AddDateButton.Click += new System.EventHandler(this.AddDateButton_Click);
             // 
             // GroupNameLabel
             // 
@@ -330,6 +368,11 @@
             this.ResumeLayout(false);
         }
 
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox DateTextBox;
+
+        private System.Windows.Forms.Button AddDateButton;
+
         private System.Windows.Forms.ToolStripMenuItem UpdateListBox;
 
         #endregion
@@ -344,7 +387,7 @@
         private System.Windows.Forms.Button LogoutButton;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.ListBox SubjectListBox;
+        public System.Windows.Forms.ListBox SubjectListBox;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button OpenAddSubjectFormButton;
         private System.Windows.Forms.MenuStrip menuStrip1;
