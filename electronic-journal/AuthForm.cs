@@ -42,5 +42,34 @@ namespace electronic_journal
                 MessageBox.Show("Авторизация не удалась. Попробуйте снова.");
             }
         }
+        
+        private void RememberMeCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (RememberMeCheckBox.Checked)
+            {
+                string username = LoginTextBox.Text;
+                string password = PasswordTextBox.Text;
+                
+                System.IO.File.WriteAllText("remembered.txt", $"{username}:{password}");
+            }
+            else
+            {
+                LoginTextBox.Clear();
+                PasswordTextBox.Clear();
+
+                //удаление файла с данными 
+                System.IO.File.Delete("remembered.txt");
+            }
+        }
+        private void AuthForm_Load(object sender, EventArgs e)
+        {
+            if (System.IO.File.Exists("remembered.txt"))
+            {
+                string[] data = System.IO.File.ReadAllText("remembered.txt").Split(':');
+                LoginTextBox.Text = data[0];
+                PasswordTextBox.Text = data[1];
+                RememberMeCheckBox.Checked = true;
+            }
+        }
     }
 }

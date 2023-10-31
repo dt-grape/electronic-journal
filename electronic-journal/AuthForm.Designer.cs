@@ -33,6 +33,7 @@
             this.LoginLabel = new System.Windows.Forms.Label();
             this.PasswordLabel = new System.Windows.Forms.Label();
             this.LoginButton = new System.Windows.Forms.Button();
+            this.RememberMeCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // LoginTextBox
@@ -69,7 +70,7 @@
             // 
             // LoginButton
             // 
-            this.LoginButton.Location = new System.Drawing.Point(150, 129);
+            this.LoginButton.Location = new System.Drawing.Point(150, 156);
             this.LoginButton.Name = "LoginButton";
             this.LoginButton.Size = new System.Drawing.Size(100, 27);
             this.LoginButton.TabIndex = 4;
@@ -77,11 +78,22 @@
             this.LoginButton.UseVisualStyleBackColor = true;
             this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click);
             // 
+            // RememberMeCheckBox
+            // 
+            this.RememberMeCheckBox.Location = new System.Drawing.Point(150, 126);
+            this.RememberMeCheckBox.Name = "RememberMeCheckBox";
+            this.RememberMeCheckBox.Size = new System.Drawing.Size(104, 24);
+            this.RememberMeCheckBox.TabIndex = 5;
+            this.RememberMeCheckBox.Text = "Запомнить ";
+            this.RememberMeCheckBox.UseVisualStyleBackColor = true;
+            this.RememberMeCheckBox.CheckedChanged += new System.EventHandler(this.RememberMeCheckBox_CheckedChanged);
+            // 
             // AuthForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 209);
+            this.Controls.Add(this.RememberMeCheckBox);
             this.Controls.Add(this.LoginButton);
             this.Controls.Add(this.PasswordLabel);
             this.Controls.Add(this.LoginLabel);
@@ -93,10 +105,12 @@
             this.Name = "AuthForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Авторизация";
+            this.Load += new System.EventHandler(this.AuthForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
+
+        private System.Windows.Forms.CheckBox RememberMeCheckBox;
 
         #endregion
 

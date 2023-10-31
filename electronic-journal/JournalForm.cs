@@ -321,6 +321,12 @@ namespace electronic_journal
             // Проходим по каждой строке и рассчитываем среднее арифметическое
             for (int rowIndex = 0; rowIndex < JournalDataGridView.Rows.Count; rowIndex++)
             {
+                // не считаем средний балл для пустых строк
+                if (JournalDataGridView.Rows[rowIndex].Cells[0].Value == null)
+                {
+                    continue;
+                }
+                
                 double sum = 0;
                 int count = 0;
 
