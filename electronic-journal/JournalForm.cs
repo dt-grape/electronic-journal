@@ -399,29 +399,26 @@ namespace electronic_journal
                 }
 
                 // Проверяем наличие более 60% оценок при отсутствии неаттестации
-                if ((double)emptyAndAbsentCount / totalCells > 0.4)
+                if ((double)emptyAndAbsentCount / totalCells >= 0.6)
                 {
-                    JournalDataGridView.Rows[rowIndex].Cells["Рекомендации"].Value = "Неаттестация";
+                    JournalDataGridView.Rows[rowIndex].Cells["Рекомендации"].Value = "Принудительная аттестация";
+                }
+                else if ((double)emptyAndAbsentCount / totalCells >= 0.4)
+                {
+                    // Проверяем наличие более 40% пропусков
+                    JournalDataGridView.Rows[rowIndex].Cells["Рекомендации"].Value = "Н/A";
                 }
                 else
                 {
-                    // Проверяем наличие частых пропусков (более 30%)
-                    if ((double)emptyAndAbsentCount / totalCells > 0.3)
+                    // Проверяем наличие более 20% пустых клеток при отсутствии неаттестации
+                    if ((double)emptyAndAbsentCount / totalCells >= 0.2)
                     {
-                        JournalDataGridView.Rows[rowIndex].Cells["Рекомендации"].Value = "Н/A";
+                        JournalDataGridView.Rows[rowIndex].Cells["Рекомендации"].Value = "Уточнить у преподавателя";
                     }
                     else
                     {
-                        // Проверяем наличие более 20% пустых клеток при отсутствии неаттестации
-                        if ((double)emptyAndAbsentCount / totalCells > 0.2)
-                        {
-                            JournalDataGridView.Rows[rowIndex].Cells["Рекомендации"].Value = "Уточнить у преподавателя";
-                        }
-                        else
-                        {
-                            // Оставляем успешный результат
-                            JournalDataGridView.Rows[rowIndex].Cells["Рекомендации"].Value = "Успех";
-                        }
+                        // Оставляем успешный результат
+                        JournalDataGridView.Rows[rowIndex].Cells["Рекомендации"].Value = "Проблем нет";
                     }
                 }
             }
