@@ -297,6 +297,59 @@ namespace electronic_journal
         private void CalculateAverageButton_Click_Click(object sender, EventArgs e)
         {
             CalculateAndAddAverageColumn();
+            CalculateAndAddAbsenceColumn();
+        }
+        private void CalculateAndAddAbsenceColumn()
+        {
+            if (JournalDataGridView.Rows.Count == 0 || JournalDataGridView.Columns.Count == 0)
+            {
+                // Проверка наличия данных для расчета
+                MessageBox.Show("Нет данных для расчета.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Проверяем наличие столбца "Кол-во пропусков"
+            if (JournalDataGridView.Columns["Кол-во пропусков"] == null)
+            {
+                // Если столбца нет, то добавляем его
+                DataGridViewTextBoxColumn absenceColumn = new DataGridViewTextBoxColumn();
+                absenceColumn.HeaderText = "Кол-во пропусков";
+                absenceColumn.Name = "Кол-во пропусков";  // Добавь эту строку, чтобы присвоить имя столбцу
+                JournalDataGridView.Columns.Add(absenceColumn);
+            }
+
+            // Проходим по каждой строке и рассчитываем количество пропусков
+            for (int rowIndex = 0; rowIndex < JournalDataGridView.Rows.Count; rowIndex++)
+            {
+                // Проверяем наличие студента в первом столбце
+                if (JournalDataGridView.Rows[rowIndex].Cells[0].Value == null)
+                {
+                    // Если нет студента, не выводим аттестацию и количество пропусков
+                    continue;
+                }
+
+                int absenceCount = 0;
+
+                // Проходим по каждой ячейке в строке
+                for (int colIndex = 1; colIndex < JournalDataGridView.Columns.Count; colIndex++)
+                {
+                    object cellValue = JournalDataGridView.Rows[rowIndex].Cells[colIndex].Value;
+
+                    if (cellValue != null)
+                    {
+                        string cellText = cellValue.ToString().Trim().ToLower();
+
+                        // Проверяем, что значение равно "н"
+                        if (cellText == "н")
+                        {
+                            absenceCount++;
+                        }
+                    }
+                }
+
+                // Выводим количество пропусков в новый столбец
+                JournalDataGridView.Rows[rowIndex].Cells["Кол-во пропусков"].Value = absenceCount.ToString();
+            }
         }
 
         private void CalculateAndAddAverageColumn()
@@ -326,34 +379,55 @@ namespace electronic_journal
                 {
                     continue;
                 }
-                
+
                 double sum = 0;
                 int count = 0;
+                int totalCells = JournalDataGridView.Rows[rowIndex].Cells.Count - 1; // Общее количество ячеек в строке
+                int emptyAndAbsentCount = 0;
 
                 // Проходим по каждой ячейке в строке
                 for (int colIndex = 1; colIndex < JournalDataGridView.Columns.Count; colIndex++)
                 {
                     object cellValue = JournalDataGridView.Rows[rowIndex].Cells[colIndex].Value;
 
-                    if (cellValue != null && cellValue.ToString().Trim().ToLower() != "н")
+                    if (cellValue != null)
                     {
-                        // Проверяем, что значение не равно "н"
-                        if (double.TryParse(cellValue.ToString(), out double mark))
+                        string cellText = cellValue.ToString().Trim().ToLower();
+
+                        // Учитываем пропуск или пустую ячейку
+                        if (cellText == "н" || cellText == "")
+                        {
+                            emptyAndAbsentCount++;
+                        }
+                        else if (double.TryParse(cellText, out double mark))
                         {
                             // Конвертируем значение в число и добавляем к сумме
                             sum += mark;
                             count++;
                         }
                     }
+                    else
+                    {
+                        // Учитываем пропуск, если ячейка пуста
+                        emptyAndAbsentCount++;
+                    }
                 }
 
-                // Рассчитываем среднее арифметическое и добавляем в новый столбец
-                double average = count > 0 ? sum / count : 0;
-                JournalDataGridView.Rows[rowIndex].Cells["Средний балл"].Value = average.ToString("0.00");
+                // Проверяем наличие частых пропусков (более 35%)
+                if ((double)emptyAndAbsentCount / totalCells > 0.35)
+                {
+                    JournalDataGridView.Rows[rowIndex].Cells["Средний балл"].Value = "Н/A";
+                }
+                else
+                {
+                    // Рассчитываем среднее арифметическое
+                    double average = count > 0 ? sum / count : 0;
+                    JournalDataGridView.Rows[rowIndex].Cells["Средний балл"].Value = average.ToString("0.00");
 
-                // Добавляем цветовую метку в зависимости от значения среднего балла
-                Color cellColor = GetColorForAverage(average);
-                JournalDataGridView.Rows[rowIndex].Cells["Средний балл"].Style.BackColor = cellColor;
+                    // Добавляем цветовую метку в зависимости от значения среднего балла
+                    Color cellColor = GetColorForAverage(average);
+                    JournalDataGridView.Rows[rowIndex].Cells["Средний балл"].Style.BackColor = cellColor;
+                }
             }
         }
         private Color GetColorForAverage(double average)

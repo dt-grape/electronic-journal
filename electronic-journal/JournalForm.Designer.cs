@@ -34,9 +34,12 @@
             this.JournalDataGridView = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.CalculateAverageButton_Click = new System.Windows.Forms.Button();
+            this.panel9 = new System.Windows.Forms.Panel();
             this.DateTextBox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.AddDateButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.GroupNameLabel = new System.Windows.Forms.Label();
             this.SubjectNameLabel = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -53,22 +56,19 @@
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UpdateListBox = new System.Windows.Forms.ToolStripMenuItem();
             this.reference = new System.Windows.Forms.ToolStripMenuItem();
-            this.CalculateAverageButton_Click = new System.Windows.Forms.Button();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.panel10 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.JournalDataGridView)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel10.SuspendLayout();
+            this.panel9.SuspendLayout();
             this.panel4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            this.panel9.SuspendLayout();
-            this.panel10.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -140,6 +140,41 @@
             this.panel5.Size = new System.Drawing.Size(646, 141);
             this.panel5.TabIndex = 4;
             // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.CalculateAverageButton_Click);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel10.Location = new System.Drawing.Point(319, 0);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(165, 139);
+            this.panel10.TabIndex = 6;
+            // 
+            // CalculateAverageButton_Click
+            // 
+            this.CalculateAverageButton_Click.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CalculateAverageButton_Click.Font = new System.Drawing.Font("Cascadia Mono", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CalculateAverageButton_Click.Location = new System.Drawing.Point(29, 77);
+            this.CalculateAverageButton_Click.Margin = new System.Windows.Forms.Padding(2);
+            this.CalculateAverageButton_Click.Name = "CalculateAverageButton_Click";
+            this.CalculateAverageButton_Click.Size = new System.Drawing.Size(110, 48);
+            this.CalculateAverageButton_Click.TabIndex = 4;
+            this.CalculateAverageButton_Click.Text = "Расчитать оценку";
+            this.CalculateAverageButton_Click.UseVisualStyleBackColor = true;
+            this.CalculateAverageButton_Click.Click += new System.EventHandler(this.CalculateAverageButton_Click_Click);
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.DateTextBox);
+            this.panel9.Controls.Add(this.AddDateButton);
+            this.panel9.Controls.Add(this.label2);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel9.Location = new System.Drawing.Point(484, 0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(160, 139);
+            this.panel9.TabIndex = 5;
+            // 
             // DateTextBox
             // 
             this.DateTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -152,14 +187,6 @@
             this.DateTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DateTextBox_KeyPress);
             this.DateTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.DateTextBox_Validating);
             this.DateTextBox.Validated += new System.EventHandler(this.DateTextBox_Validated);
-            // 
-            // label2
-            // 
-            this.label2.Location = new System.Drawing.Point(23, 27);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 14);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Дата";
             // 
             // AddDateButton
             // 
@@ -175,6 +202,14 @@
             this.AddDateButton.Text = "Добавить дату";
             this.AddDateButton.UseVisualStyleBackColor = true;
             this.AddDateButton.Click += new System.EventHandler(this.AddDateButton_Click);
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(23, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 14);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Дата";
             // 
             // GroupNameLabel
             // 
@@ -272,9 +307,9 @@
             // 
             this.SubjectListBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SubjectListBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SubjectListBox.Font = new System.Drawing.Font("Cascadia Mono", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SubjectListBox.Font = new System.Drawing.Font("Cascadia Mono", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.SubjectListBox.FormattingEnabled = true;
-            this.SubjectListBox.ItemHeight = 32;
+            this.SubjectListBox.ItemHeight = 22;
             this.SubjectListBox.Location = new System.Drawing.Point(0, 0);
             this.SubjectListBox.Margin = new System.Windows.Forms.Padding(2);
             this.SubjectListBox.Name = "SubjectListBox";
@@ -348,41 +383,6 @@
             this.reference.Size = new System.Drawing.Size(81, 24);
             this.reference.Text = "Справка";
             // 
-            // CalculateAverageButton_Click
-            // 
-            this.CalculateAverageButton_Click.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CalculateAverageButton_Click.Font = new System.Drawing.Font("Cascadia Mono", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CalculateAverageButton_Click.Location = new System.Drawing.Point(29, 77);
-            this.CalculateAverageButton_Click.Margin = new System.Windows.Forms.Padding(2);
-            this.CalculateAverageButton_Click.Name = "CalculateAverageButton_Click";
-            this.CalculateAverageButton_Click.Size = new System.Drawing.Size(110, 48);
-            this.CalculateAverageButton_Click.TabIndex = 4;
-            this.CalculateAverageButton_Click.Text = "Расчитать оценку";
-            this.CalculateAverageButton_Click.UseVisualStyleBackColor = true;
-            this.CalculateAverageButton_Click.Click += new System.EventHandler(this.CalculateAverageButton_Click_Click);
-            // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.DateTextBox);
-            this.panel9.Controls.Add(this.AddDateButton);
-            this.panel9.Controls.Add(this.label2);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel9.Location = new System.Drawing.Point(484, 0);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(160, 139);
-            this.panel9.TabIndex = 5;
-            // 
-            // panel10
-            // 
-            this.panel10.Controls.Add(this.CalculateAverageButton_Click);
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel10.Location = new System.Drawing.Point(319, 0);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(165, 139);
-            this.panel10.TabIndex = 6;
-            // 
             // JournalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
@@ -405,6 +405,9 @@
             this.panel3.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -414,9 +417,6 @@
             this.panel7.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.panel9.ResumeLayout(false);
-            this.panel9.PerformLayout();
-            this.panel10.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
